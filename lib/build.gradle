@@ -33,6 +33,9 @@ publishing {
     }
 }
 
+version('0.1.0')
+group('org.lubo')
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -65,4 +68,15 @@ java {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
+java {
+    withJavadocJar()
 }
